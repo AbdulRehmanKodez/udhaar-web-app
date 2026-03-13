@@ -20,6 +20,6 @@ export const addsheet = (data)=> api.post('/sheet/addsheet', data)
 
 export const getallsheets = (id)=>api.get(`/sheet/customer/${id}`)
 
-export const getsheet = (id)=>api.get(`/sheet/getsheet/${id}`)
+export const getsheet = (id)=>api.get(`/sheet/${id}`)
 
 export const updatepayment = (id, data)=>api.put(`/sheet/payment/${id}`, data)

@@ -26,7 +26,7 @@ export const getSheetsByCustomerId=async(req,res)=>{
         const {customerId}=req.params
         const sheets=await Sheet.find({customerId})
         if(sheets.length===0){
-            return res.status(404).json({message:'No sheets found for this customer'})
+            return res.status(200).json([],{message:'No sheets found for this customer'})
         }
           res.status(200).json(sheets)
     }catch(err){
