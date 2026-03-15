@@ -9,11 +9,12 @@ function Customercard({onAdd}) {
         addcustomer(form).then((res)=>{
             console.log(res.data)
             onAdd()
+             setForm({'name':'','address':'','phone':''  })
         })
-        setForm({'name':'','address':'','phone':''  })
+       
     }
   return (
-    <div className='h-40 w-full bg-gray-400 text-amber-100'>
+    <div className='h-40 w-full bg-gray-400 text-amber-100'>3
         <h1>Customer Card</h1>
         <form action="" onSubmit={submitHandler}>
             <label htmlFor="name">Name</label>

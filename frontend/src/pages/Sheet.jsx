@@ -1,9 +1,10 @@
 import React, { useEffect,useState } from 'react'
 import { useParams } from 'react-router-dom'
-import {getsheet} from '../services/api.js'
+import {getsheet,updatepayment} from '../services/api.js'
 
 function Sheet() {
   const [sheet, setSheet] = useState(null)
+  const [payment, setPayment] = useState('')
   const { id } = useParams()
   useEffect(() => {
     getsheet(id).then((res)=>{
@@ -13,6 +14,13 @@ function Sheet() {
   }, [])
   
   if(!sheet) return <h1>Loading...</h1>
+    const paymentupdatehandler = (e)=>{
+      updatepayment(id,{paidAmount:payment}).then((res)=>{
+        console.log(res.data);
+        setSheet(res.data.sheet)
+      })
+    }
+
   return (
     <div className='text-amber-100'>
       {sheet.items.map((items)=>(
@@ -26,6 +34,10 @@ function Sheet() {
          
          <h1>total: {sheet.totalAmount}</h1>
          <h1>paid: {sheet.paidAmount}</h1>
+         <input type="text" name="payment" id="" value={payment} onChange={(e)=>{
+          setPayment(e.target.value)
+         }} />
+         <button onClick={()=>paymentupdatehandler()}>Add payment</button>
          <h1>remaining: {sheet.totalAmount - sheet.paidAmount}</h1>
     </div>
   )

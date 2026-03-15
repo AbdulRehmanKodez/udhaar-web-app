@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import {getallsheets,getcustomer} from '../services/api.js'
 import { useParams , useNavigate } from 'react-router-dom'
-
+import Sheetcard from '../components/Sheetcard.jsx'
 function Customers() {
   const {id} = useParams()
   const [customer, setCustomer] = useState(null)
@@ -24,9 +24,18 @@ function Customers() {
      
   }, [])
   return (
+   
+   
     <div className='h-full w-full bg-taupe-600'>
+
+      
+
       <h1>{customer?.name}</h1>
       <h1>{customer?.phone}</h1>
+
+
+
+       <Sheetcard id = {id} />
          <div>
           {sheets.map((sheet)=>(
             <div key={sheet._id} onClick={()=>navigate(`/sheet/${sheet._id}`)}>
