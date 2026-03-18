@@ -13,14 +13,14 @@ function Sheet() {
     })
   }, [])
   
-  if(!sheet) return <h1>Loading...</h1>
+ 
     const paymentupdatehandler = (e)=>{
       updatepayment(id,{paidAmount:payment}).then((res)=>{
         console.log(res.data);
         setSheet(res.data.sheet)
       })
     }
-
+ if(!sheet) return <h1>Loading...</h1>
   return (
     <div className='text-amber-100'>
       {sheet.items.map((items)=>(
